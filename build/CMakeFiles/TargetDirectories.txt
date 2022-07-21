@@ -1,0 +1,3 @@
+/home/piotr/cpu-usage-tracker/build/CMakeFiles/CUT.dir
+/home/piotr/cpu-usage-tracker/build/CMakeFiles/edit_cache.dir
+/home/piotr/cpu-usage-tracker/build/CMakeFiles/rebuild_cache.dir
