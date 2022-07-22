@@ -129,6 +129,30 @@ CUT/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/build
 .PHONY : CUT/fast
 
+functions.o: functions.c.o
+.PHONY : functions.o
+
+# target to build an object file
+functions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/functions.c.o
+.PHONY : functions.c.o
+
+functions.i: functions.c.i
+.PHONY : functions.i
+
+# target to preprocess a source file
+functions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/functions.c.i
+.PHONY : functions.c.i
+
+functions.s: functions.c.s
+.PHONY : functions.s
+
+# target to generate assembly for a file
+functions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/functions.c.s
+.PHONY : functions.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CUT"
+	@echo "... functions.o"
+	@echo "... functions.i"
+	@echo "... functions.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

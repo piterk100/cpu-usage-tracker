@@ -81,12 +81,12 @@ clean: CMakeFiles/CUT.dir/clean
 CMakeFiles/CUT.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CUT.dir/build.make CMakeFiles/CUT.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/piotr/cpu-usage-tracker/build/CMakeFiles --progress-num=1,2 "Built target CUT"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/piotr/cpu-usage-tracker/build/CMakeFiles --progress-num=1,2,3 "Built target CUT"
 .PHONY : CMakeFiles/CUT.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/CUT.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/piotr/cpu-usage-tracker/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/piotr/cpu-usage-tracker/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CUT.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/piotr/cpu-usage-tracker/build/CMakeFiles 0
 .PHONY : CMakeFiles/CUT.dir/rule

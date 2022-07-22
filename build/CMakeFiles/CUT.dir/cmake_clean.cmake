@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/CUT.dir/functions.c.o"
+  "CMakeFiles/CUT.dir/functions.c.o.d"
   "CMakeFiles/CUT.dir/main.c.o"
   "CMakeFiles/CUT.dir/main.c.o.d"
   "CUT"

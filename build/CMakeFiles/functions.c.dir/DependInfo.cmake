@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/piotr/cpu-usage-tracker/functions.c" "CMakeFiles/CUT.dir/functions.c.o" "gcc" "CMakeFiles/CUT.dir/functions.c.o.d"
-  "/home/piotr/cpu-usage-tracker/main.c" "CMakeFiles/CUT.dir/main.c.o" "gcc" "CMakeFiles/CUT.dir/main.c.o.d"
   )
 
 # Targets to which this target links.
