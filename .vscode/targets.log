@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 21 20:23:55 2022
+# Make data base, printed on Sat Jul 23 18:26:48 2022
 
 # Variables
 
@@ -55,13 +55,13 @@ VSCODE_CODE_CACHE_PATH = /home/piotr/.config/Code/CachedData/3b889b090b5ad5793f5
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.LF3PP1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.CPLKP1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.103
+GNOME_TERMINAL_SERVICE = :1.101
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -91,13 +91,13 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 19607
+VSCODE_PID = 2832
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/piotr-virtual-machine:@/tmp/.ICE-unix/1652,unix/piotr-virtual-machine:/tmp/.ICE-unix/1652
+SESSION_MANAGER = local/piotr-virtual-machine:@/tmp/.ICE-unix/1787,unix/piotr-virtual-machine:/tmp/.ICE-unix/1787
 # automatic
 *F = $(notdir $*)
 # environment
@@ -121,7 +121,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b6302121_c767_4650_a18f_71bb54f87bc8
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d5b46c66_d4d3_4cca_b67d_39ce409dc64f
 # environment
 MAKELEVEL := 0
 # default
@@ -165,7 +165,7 @@ LOGNAME = piotr
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 1704
+SYSTEMD_EXEC_PID = 1843
 # environment
 DISPLAY = :0
 # environment
@@ -282,12 +282,12 @@ GNUmakefile:
 # No general ('VPATH' variable) search path.
 
  
-# strcache buffers: 1 (0) / strings = 17 / storage = 153 B / avg = 9 B
-# current buf: size = 8162 B / used = 153 B / count = 17 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 155 B / avg = 9 B
+# current buf: size = 8162 B / used = 155 B / count = 17 / avg = 9 B
 
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/20=0%
-# Finished Make data base on Thu Jul 21 20:23:55 2022
+# Finished Make data base on Sat Jul 23 18:26:48 2022
 
  

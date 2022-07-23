@@ -4,18 +4,31 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <semaphore.h>
+
+extern pthread_mutex_t mutexBuffer;
+
+extern sem_t semEmpty;
+extern sem_t semFull;
 
 int main() {
     pthread_t Reader;
-    void *out_void;
-    stats * array;
+    pthread_t Analyzer;
+
+    pthread_mutex_init(&mutexBuffer, NULL);
+
+    sem_init(&semEmpty, 0, 10);
+    sem_init(&semFull, 0, 0);
+
     pthread_create(&Reader, NULL, readerFunc, NULL);
-    pthread_join(Reader, &out_void);
-    /*pthread_exit(NULL);*/
+    pthread_create(&Analyzer, NULL, analyzerFunc, NULL);
+    pthread_join(Reader, NULL);
+    pthread_join(Analyzer, NULL);
 
-    array = out_void;
-    printf("test: %c\n", array[2].core_number);
-    free(array);
+    sem_destroy(&semEmpty);
+    sem_destroy(&semFull);
 
+    pthread_mutex_destroy(&mutexBuffer);
+    
     return 0;
 }
