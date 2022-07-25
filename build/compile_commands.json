@@ -1,12 +1,12 @@
 [
 {
   "directory": "/home/piotr/cpu-usage-tracker/build",
-  "command": "/usr/bin/c89-gcc   -g -o CMakeFiles/CUT.dir/main.c.o -c /home/piotr/cpu-usage-tracker/main.c",
+  "command": "/usr/bin/c89-gcc   -g -g -o CMakeFiles/CUT.dir/main.c.o -c /home/piotr/cpu-usage-tracker/main.c",
   "file": "/home/piotr/cpu-usage-tracker/main.c"
 },
 {
   "directory": "/home/piotr/cpu-usage-tracker/build",
-  "command": "/usr/bin/c89-gcc   -g -o CMakeFiles/CUT.dir/functions.c.o -c /home/piotr/cpu-usage-tracker/functions.c",
+  "command": "/usr/bin/c89-gcc   -g -g -o CMakeFiles/CUT.dir/functions.c.o -c /home/piotr/cpu-usage-tracker/functions.c",
   "file": "/home/piotr/cpu-usage-tracker/functions.c"
 }
 ]

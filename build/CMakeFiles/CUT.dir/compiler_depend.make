@@ -56,7 +56,9 @@ CMakeFiles/CUT.dir/functions.c.o: ../functions.c \
   /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/x86_64-linux-gnu/bits/semaphore.h
+  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 CMakeFiles/CUT.dir/main.c.o: ../main.c \
   /usr/include/stdc-predef.h \

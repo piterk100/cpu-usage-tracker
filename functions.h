@@ -5,13 +5,20 @@ typedef struct stats {
     unsigned long long user, nice, system, idle, iowait, irq, softirq, steal, guest, guestnice;
 } stats;
 
-typedef struct data {
+typedef struct dataRA {
     stats * stats;
     int number_of_cores;
-} data;
+} dataRA;
+
+typedef struct dataAP {
+    int * percentage;
+    int number_of_cores;
+} dataAP;
 
 struct stats get_stats(int wantline);
 
 void * readerFunc(void *args);
 
 void * analyzerFunc(void *args);
+
+void * printerFunc(void *args);
