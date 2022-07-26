@@ -6,44 +6,53 @@
 #include <semaphore.h>
 #include <stdlib.h>
 
-dataRA bufferRA[10];
+int number_of_cores = 0;
+
+stats * bufferRA[10];
 int countRA = 0;
 
-pthread_mutex_t mutexBuffer;
+percentage * bufferAP[10];
+int countAP = 0;
 
-sem_t semEmpty;
-sem_t semFull;
+pthread_mutex_t mutexBufferRA;
+pthread_mutex_t mutexBufferAP;
+
+sem_t semEmptyRA;
+sem_t semFullRA;
+
+sem_t semEmptyAP;
+sem_t semFullAP;
 
 struct stats get_stats(int wantline) {
     FILE* file = fopen("/proc/stat", "r");
-    struct stats stats = {'x', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    stats statsx = {'x', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     if (file == NULL) {
         perror("Could not open stat file");
-        return stats;
+        return statsx;
     }
 
     char cbuffer[1024];
 
     int line = 0;
     while(fgets(cbuffer, sizeof(cbuffer) - 1, file)) {
-        if (cbuffer[0] != 'c') return stats;
+        if (cbuffer[0] != 'c') return statsx;
         if (line == wantline) {
             sscanf(cbuffer,
                 "cpu%c %16llu %16llu %16llu %16llu %16llu %16llu %16llu %16llu %16llu %16llu",
-                &stats.core_number, &stats.user, &stats.nice, &stats.system, &stats.idle, &stats.iowait, &stats.irq, &stats.softirq, &stats.steal, &stats.guest, &stats.guestnice);
+                &statsx.core_number, &statsx.user, &statsx.nice, &statsx.system, &statsx.idle, &statsx.iowait, &statsx.irq, &statsx.softirq, &statsx.steal, &statsx.guest, &statsx.guestnice);
         }                                    
         line++;
     }
     
     fclose(file);
 
-    return stats;
+    return statsx;
 }
 
 void * readerFunc(void *args) {
     while (1) {
-        stats *array = malloc(sizeof *array);
+        stats * array = malloc(sizeof * array);
         int arr_size = 1;
         array[0] = get_stats(0);
         int i = 1;
@@ -66,50 +75,37 @@ void * readerFunc(void *args) {
         
         sleep(1);
 
-        dataRA *dataRA = malloc(sizeof *dataRA);
-        dataRA->stats = array;
-        dataRA->number_of_cores = arr_size;
+        number_of_cores = arr_size;
         
-        sem_wait(&semEmpty);
-        pthread_mutex_lock(&mutexBuffer);
+        sem_wait(&semEmptyRA);
+        pthread_mutex_lock(&mutexBufferRA);
 
-        bufferRA[countRA].stats = dataRA->stats;
-        bufferRA[countRA].number_of_cores = dataRA->number_of_cores;
+        bufferRA[countRA] = array;
         countRA++;
 
-        pthread_mutex_unlock(&mutexBuffer);
-        sem_post(&semFull);
-
-        free(dataRA);
+        pthread_mutex_unlock(&mutexBufferRA);
+        sem_post(&semFullRA);
     }
 }
 
 void * analyzerFunc(void *args) {
     while (1) {
-        dataRA *y1;
-        dataRA *y2;
+        percentage * array = malloc(number_of_cores * (sizeof * array));
 
-        sem_wait(&semFull);
-        pthread_mutex_lock(&mutexBuffer);
+        sem_wait(&semFullRA);
+        pthread_mutex_lock(&mutexBufferRA);
 
         int v;
-        sem_getvalue(&semEmpty, &v);
+        sem_getvalue(&semEmptyRA, &v);
         if (v < 9) {
-            y1 = &bufferRA[0];
-            y2 = &bufferRA[1];
-            countRA--;
-            
-            /*printf("test: %lld\n", y2->stats[0].user);
-            printf("cpu%c %lld %lld %lld %lld %lld %lld %lld %lld %lld %lld\n",
-                y1->stats[0].core_number, y1->stats[0].user, y1->stats[0].nice, y1->stats[0].system, y1->stats[0].idle, y1->stats[0].iowait, y1->stats[0].irq, y1->stats[0].softirq, y1->stats[0].steal, y1->stats[0].guest, y1->stats[0].guestnice);
-            
-            */int i = 0;
-            while (i < y1->number_of_cores) {
-                int PrevIdle = y1->stats[i].idle + y1->stats[i].iowait;
-                int Idle = y2->stats[i].idle + y2->stats[i].iowait;
+            countRA--;      
+            int i = 0;
+            while (i < number_of_cores) {
+                int PrevIdle = bufferRA[0][i].idle + bufferRA[0][i].iowait;
+                int Idle = bufferRA[1][i].idle + bufferRA[1][i].iowait;
 
-                int PrevNonIdle = y1->stats[i].user + y1->stats[i].nice + y1->stats[i].system + y1->stats[i].irq + y1->stats[i].softirq + y1->stats[i].steal;
-                int NonIdle = y2->stats[i].user + y2->stats[i].nice + y2->stats[i].system + y2->stats[i].irq + y2->stats[i].softirq + y2->stats[i].steal;
+                int PrevNonIdle = bufferRA[0][i].user + bufferRA[0][i].nice + bufferRA[0][i].system + bufferRA[0][i].irq + bufferRA[0][i].softirq + bufferRA[0][i].steal;
+                int NonIdle = bufferRA[1][i].user + bufferRA[1][i].nice + bufferRA[1][i].system + bufferRA[1][i].irq + bufferRA[1][i].softirq + bufferRA[1][i].steal;
 
                 int PrevTotal = PrevIdle + PrevNonIdle;
                 int Total = Idle + NonIdle;
@@ -121,26 +117,53 @@ void * analyzerFunc(void *args) {
                 float b = (float)idled;
 
                 float CPU_Percentage = ((a - b)/a)*100;
-                printf("cpu%c: %d\n", y2->stats[i].core_number, (int)CPU_Percentage);
+                array[i].p = (int)CPU_Percentage;
+                array[i].core_number = bufferRA[1][i].core_number;
                 i++;
             }
-            free(bufferRA[0].stats);
+            sem_wait(&semEmptyAP);
+            pthread_mutex_lock(&mutexBufferAP);
+
+            bufferAP[countAP] = array;
+            countAP++;
+
+            pthread_mutex_unlock(&mutexBufferAP);
+            sem_post(&semFullAP);
+
+            free(bufferRA[0]);
             int k = 0;
             while (k < countRA) {        
                 bufferRA[k] = bufferRA[k+1];
                 k++;
             }
-            sem_post(&semEmpty);
+            sem_post(&semEmptyRA);
         }
-
-        pthread_mutex_unlock(&mutexBuffer);
-
-        dataAP x;
+        pthread_mutex_unlock(&mutexBufferRA);
     }
 }
 
 void * printerFunc(void *args) {
     while (1) {
-        /* code */
+        sem_wait(&semFullAP);
+        pthread_mutex_lock(&mutexBufferAP);
+
+        int i = 0;
+        while (i < number_of_cores) {
+            printf("cpu%c: %d%%\n", bufferAP[0][i].core_number, bufferAP[0][i].p);
+            i++;
+        }
+        printf("-------------------------------------\n");
+
+        countAP--;
+        free(bufferAP[0]);
+
+        int k = 0;
+        while (k < countAP) {        
+            bufferAP[k] = bufferAP[k+1];
+            k++;
+        }
+
+        sem_post(&semEmptyAP);
+        pthread_mutex_unlock(&mutexBufferAP);
     }   
 }
