@@ -73,29 +73,29 @@ CMakeFiles/CUT.dir/main.c.o: CMakeFiles/CUT.dir/flags.make
 CMakeFiles/CUT.dir/main.c.o: ../main.c
 CMakeFiles/CUT.dir/main.c.o: CMakeFiles/CUT.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piotr/cpu-usage-tracker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/CUT.dir/main.c.o"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CUT.dir/main.c.o -MF CMakeFiles/CUT.dir/main.c.o.d -o CMakeFiles/CUT.dir/main.c.o -c /home/piotr/cpu-usage-tracker/main.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CUT.dir/main.c.o -MF CMakeFiles/CUT.dir/main.c.o.d -o CMakeFiles/CUT.dir/main.c.o -c /home/piotr/cpu-usage-tracker/main.c
 
 CMakeFiles/CUT.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CUT.dir/main.c.i"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/piotr/cpu-usage-tracker/main.c > CMakeFiles/CUT.dir/main.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/piotr/cpu-usage-tracker/main.c > CMakeFiles/CUT.dir/main.c.i
 
 CMakeFiles/CUT.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CUT.dir/main.c.s"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/piotr/cpu-usage-tracker/main.c -o CMakeFiles/CUT.dir/main.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/piotr/cpu-usage-tracker/main.c -o CMakeFiles/CUT.dir/main.c.s
 
 CMakeFiles/CUT.dir/functions.c.o: CMakeFiles/CUT.dir/flags.make
 CMakeFiles/CUT.dir/functions.c.o: ../functions.c
 CMakeFiles/CUT.dir/functions.c.o: CMakeFiles/CUT.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piotr/cpu-usage-tracker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CUT.dir/functions.c.o"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CUT.dir/functions.c.o -MF CMakeFiles/CUT.dir/functions.c.o.d -o CMakeFiles/CUT.dir/functions.c.o -c /home/piotr/cpu-usage-tracker/functions.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CUT.dir/functions.c.o -MF CMakeFiles/CUT.dir/functions.c.o.d -o CMakeFiles/CUT.dir/functions.c.o -c /home/piotr/cpu-usage-tracker/functions.c
 
 CMakeFiles/CUT.dir/functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CUT.dir/functions.c.i"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/piotr/cpu-usage-tracker/functions.c > CMakeFiles/CUT.dir/functions.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/piotr/cpu-usage-tracker/functions.c > CMakeFiles/CUT.dir/functions.c.i
 
 CMakeFiles/CUT.dir/functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CUT.dir/functions.c.s"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/piotr/cpu-usage-tracker/functions.c -o CMakeFiles/CUT.dir/functions.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/piotr/cpu-usage-tracker/functions.c -o CMakeFiles/CUT.dir/functions.c.s
 
 # Object files for target CUT
 CUT_OBJECTS = \

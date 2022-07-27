@@ -1,10 +1,11 @@
 #include "functions.h"
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <signal.h>
+#include <string.h>
 
 extern pthread_mutex_t mutexBufferRA;
 extern sem_t semEmptyRA;
@@ -14,7 +15,14 @@ extern pthread_mutex_t mutexBufferAP;
 extern sem_t semEmptyAP;
 extern sem_t semFullAP;
 
-int main() {
+extern volatile sig_atomic_t done;
+
+int main(int argc, char *argv[]) {
+    struct sigaction action;
+    memset(&action, 0, sizeof(struct sigaction));
+    action.sa_handler = term;
+    sigaction(SIGTERM, &action, NULL);
+
     pthread_t Reader;
     pthread_t Analyzer;
     pthread_t Printer;

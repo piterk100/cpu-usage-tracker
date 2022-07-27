@@ -11,7 +11,8 @@
 		"commands" : 
 		[
 			"add_executable",
-			"add_compile_options"
+			"add_compile_options",
+			"set_property"
 		],
 		"files" : 
 		[
@@ -25,13 +26,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 5,
+				"line" : 7,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 2,
+				"line" : 3,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 11,
 				"parent" : 0
 			}
 		]
@@ -42,14 +49,22 @@
 			"compileCommandFragments" : 
 			[
 				{
+					"backtrace" : 2,
 					"fragment" : "-g"
 				},
 				{
-					"backtrace" : 2,
-					"fragment" : "-g"
+					"fragment" : "-std=gnu99"
 				}
 			],
 			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3
+				],
+				"standard" : "99"
+			},
 			"sourceIndexes" : 
 			[
 				0,
@@ -62,10 +77,6 @@
 	{
 		"commandFragments" : 
 		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
 			{
 				"fragment" : "",
 				"role" : "flags"

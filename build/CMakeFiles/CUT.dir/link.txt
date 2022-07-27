@@ -1,1 +1,1 @@
-/usr/bin/c89-gcc -g CMakeFiles/CUT.dir/main.c.o CMakeFiles/CUT.dir/functions.c.o -o CUT 
+/usr/bin/gcc CMakeFiles/CUT.dir/main.c.o CMakeFiles/CUT.dir/functions.c.o -o CUT 
