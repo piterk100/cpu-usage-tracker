@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 28 02:14:51 2022
+# Make data base, printed on Thu Jul 28 20:29:11 2022
 
 # Variables
 
@@ -55,13 +53,13 @@ VSCODE_CODE_CACHE_PATH = /home/piotr/.config/Code/CachedData/3b889b090b5ad5793f5
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.AOP6P1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.E2DZP1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.100
+GNOME_TERMINAL_SERVICE = :1.95
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -91,13 +89,13 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 2538
+VSCODE_PID = 12937
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/piotr-virtual-machine:@/tmp/.ICE-unix/1798,unix/piotr-virtual-machine:/tmp/.ICE-unix/1798
+SESSION_MANAGER = local/piotr-virtual-machine:@/tmp/.ICE-unix/1757,unix/piotr-virtual-machine:/tmp/.ICE-unix/1757
 # automatic
 *F = $(notdir $*)
 # environment
@@ -121,7 +119,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/819ff934_d47d_4fea_ac9e_80e9aeeec367
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/fc4fa8e6_48c0_4678_a662_364e41be1985
 # environment
 MAKELEVEL := 0
 # default
@@ -165,7 +163,7 @@ LOGNAME = piotr
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 1856
+SYSTEMD_EXEC_PID = 1799
 # environment
 DISPLAY = :0
 # environment
@@ -282,12 +280,14 @@ GNUmakefile:
 # No general ('VPATH' variable) search path.
 
  
+make: *** No rule to make target 'all'.  Stop.
+
 # strcache buffers: 1 (0) / strings = 17 / storage = 155 B / avg = 9 B
 # current buf: size = 8162 B / used = 155 B / count = 17 / avg = 9 B
 
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/20=0%
-# Finished Make data base on Thu Jul 28 02:14:51 2022
+# Finished Make data base on Thu Jul 28 20:29:11 2022
 
  

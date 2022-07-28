@@ -1,5 +1,7 @@
-#define BUFFER_RA_SIZE 10
-#define BUFFER_AP_SIZE 10
+#include <time.h>
+
+#define BUFFER_SIZE 10
+#define WAITING_SECONDS 2
 
 typedef struct stats {
     char core_number;
@@ -13,10 +15,20 @@ typedef struct percentage {
 
 void term(int signum);
 
+int move_right(int x);
+
+percentage * calculate(percentage * array);
+
+void print();
+
 stats get_stats(int wantline);
 
-void * readerFunc(void *args);
+double check_time(clock_t t);
 
-void * analyzerFunc(void *args);
+void * readerFunc(void * args);
 
-void * printerFunc(void *args);
+void * analyzerFunc(void * args);
+
+void * printerFunc(void * args);
+
+void * watchdogFunc(void * args);

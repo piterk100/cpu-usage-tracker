@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 add_compile_options(-g)
+add_compile_options(-Wall -Wextra)
 
 project(CUT)
 
