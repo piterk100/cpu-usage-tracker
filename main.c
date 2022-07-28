@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     struct sigaction action;
     memset(&action, 0, sizeof(struct sigaction));
     action.sa_handler = term;
-    sigaction(SIGTERM, &action, NULL);
+    sigaction(SIGINT, &action, NULL);
 
     pthread_t Reader;
     pthread_t Analyzer;

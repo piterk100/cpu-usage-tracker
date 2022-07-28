@@ -1,3 +1,6 @@
+#define BUFFER_RA_SIZE 10
+#define BUFFER_AP_SIZE 10
+
 typedef struct stats {
     char core_number;
     unsigned long long user, nice, system, idle, iowait, irq, softirq, steal, guest, guestnice;

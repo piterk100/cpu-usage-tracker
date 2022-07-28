@@ -10,13 +10,9 @@
 
 int number_of_cores = 0;
 
-#define BUFFER_RA_SIZE 10
-
 stats * bufferRA[BUFFER_RA_SIZE];
 int headRA = 0;
 int tailRA = 0;
-
-#define BUFFER_AP_SIZE 10
 
 percentage * bufferAP[BUFFER_AP_SIZE];
 int headAP = 0;
@@ -34,6 +30,26 @@ volatile sig_atomic_t done = 0;
 
 void term(int signum) {
     done = 1;
+
+    if (headRA <= tailRA) {
+        for (int i = headRA + 1; i < tailRA; i++)
+            free(bufferRA[i]);
+    } else {
+        for (int i = 0; i < tailRA; i++)
+            free(bufferRA[i]);
+        for (int i = headRA + 1; i < BUFFER_RA_SIZE; i++)
+            free(bufferRA[i]);
+    }
+
+    if (headAP <= tailAP) {
+        for (int i = headAP + 1; i < tailAP; i++)
+            free(bufferAP[i]);
+    } else {
+        for (int i = 0; i < tailAP; i++)
+            free(bufferAP[i]);
+        for (int i = headAP + 1; i < BUFFER_AP_SIZE; i++)
+            free(bufferAP[i]);
+    }
 }
 
 struct stats get_stats(int wantline) {
@@ -103,10 +119,6 @@ void * readerFunc(void *args) {
 }
 
 void * analyzerFunc(void *args) {
-    struct sigaction action;
-    memset(&action, 0, sizeof(struct sigaction));
-    action.sa_handler = term;
-    sigaction(SIGTERM, &action, NULL);
     while (!done) {
         sem_wait(&semFullRA);
         pthread_mutex_lock(&mutexBufferRA);
@@ -156,26 +168,10 @@ void * analyzerFunc(void *args) {
             sem_post(&semEmptyRA);
         }
         pthread_mutex_unlock(&mutexBufferRA);
-        while (done) {
-            if (headRA <= tailRA) {
-                for (int i = headRA + 1; i < tailRA; i++)
-                    free(bufferRA[i]);
-            }
-            else {
-                for (int i = 0; i < tailRA; i++)
-                    free(bufferRA[i]);
-                for (int i = headRA + 1; i < BUFFER_RA_SIZE; i++)
-                    free(bufferRA[i]);
-            }
-        }
     }
 }
 
 void * printerFunc(void *args) {
-    struct sigaction action;
-    memset(&action, 0, sizeof(struct sigaction));
-    action.sa_handler = term;
-    sigaction(SIGTERM, &action, NULL);
     while (!done) {
         sem_wait(&semFullAP);
         pthread_mutex_lock(&mutexBufferAP);
@@ -191,17 +187,5 @@ void * printerFunc(void *args) {
 
         sem_post(&semEmptyAP);
         pthread_mutex_unlock(&mutexBufferAP);
-        while (done) {
-            if (headAP <= tailAP) {
-                for (int i = headAP + 1; i < tailAP; i++)
-                    free(bufferAP[i]);
-            }
-            else {
-                for (int i = 0; i < tailAP; i++)
-                    free(bufferAP[i]);
-                for (int i = headAP + 1; i < BUFFER_AP_SIZE; i++)
-                    free(bufferAP[i]);
-            }
-        }
     }
 }
